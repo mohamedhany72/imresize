@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing API Project</title>
+    <style>
+        body{
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Image Processing API Project</h1>
+    <div>
+        <h2>URL to write</h2>
+        <p>
+            in this project I used express params instead of queries so to 
+            type the correct url enter "<span class="green">api/images/name/width/height</span>" instead of 
+            "<span class="red">api/images/?filename=name&width=width&height=height</span>"
+        </p>
+    </div>
+    <div>
+        <h2>list of urls of this api</h2>
+        <ul>
+            <li>the <a href="#">main page</a> contain description</li>
+            <li><a href="#">/api/images/nameofimage</a> will preview the full image</li>
+            <li><a href="#">/api/images/name/width/height</a> will preview the resized image</li>
+        </ul>
+    </div>
+
+    <div>
+        <h2>what my api does?</h2>
+        <p>
+            The api take image name, width and height and then resize the image using sharp and save it to thumbnails folder. <br>
+            If the user enters the same url again the api won't resize the image but instead it will grab it from 
+            Thumbnails folder and thus save time. <br>
+            If the user enter a name of an image that doesn't exist the api will throw a 404 error <br>
+            If the user enter bad url parameters like a string in width or in height or be entering a negative number
+            it will throw a 500 error <br>
+        </p>
+    </div>
+
+    <div>
+        <h2>functionality description</h2>
+        <p>
+            The app has routes for scalability of the app. <br>
+            Image route handles two get requests; one for the full image and one for the resized image. <br>
+            The get request which handle the resized image has three middelwares, <br>
+            the first to check existance of the full image, <br>
+            the second to validate width and height parameters, <br>
+            and the third to check existance of the resized image, <br>
+            if the request passes the three middlewares, then the resizing function will be called to resize 
+            the image, save it to the thumbnails folder, and return the path to that resized image. <br>
+            All of the middlewares and the resizing functions are separated in files in util folder. <br>
+        </p>
+    </div>
+
+    <div>
+        <h2>test that I made</h2>
+        <ul>
+            <li>test for the the resizing function</li>
+            <li>test for the main page endpoint</li>
+            <li>test for api/image end point with image name only</li>
+            <li>test for throwing an error when entering a file name that doesn't exist</li>
+            <li>test for api/image end point with good params</li>
+            <li>test for api/image end point with bad params</li>
+        </ul>
+    </div>
+</body>
+</html>
