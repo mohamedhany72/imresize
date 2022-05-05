@@ -29,4 +29,4 @@ jobs:
             sudo pip install awsebcli --upgrade
       - run:
                 name: Deploying
-                command: eb deploy Imresize-env
+                command: cd build && eb deploy Imresize-env
